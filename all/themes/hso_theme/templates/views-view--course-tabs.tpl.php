@@ -38,9 +38,6 @@
 				<li><a href="#startdaten">Startdaten</a></li>
 			</ul>
 		<?php endif; ?>
-		<div class="views-row views-row-startdaten" id="startdaten">
-			<?php print views_embed_view('course_times'); ?>
-		</div>
 	</div>
 
 </div>

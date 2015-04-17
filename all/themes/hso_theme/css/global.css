@@ -1355,6 +1355,18 @@ body.excollege_section .node-webform form.webform-client-form .form-item a {
 body.excollege_section .node-webform form.webform-client-form .form-actions .form-submit {
   background-color: #b1a896;
 }
+body.lccollege_section .node-webform form.webform-client-form .form-item a {
+  color: #009251;
+}
+body.lccollege_section .node-webform form.webform-client-form .form-actions .form-submit {
+  background-color: #009251;
+}
+body.langcollege_section .node-webform form.webform-client-form .form-item a {
+  color: #005799;
+}
+body.langcollege_section .node-webform form.webform-client-form .form-actions .form-submit {
+  background-color: #005799;
+}
 /*
  *  Segment-block panes (course intro page)
  * --------------------------------------------------*/
