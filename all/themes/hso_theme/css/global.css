@@ -802,7 +802,6 @@ body.langcollege_section #zone-menu-wrapper {
 }
 #block-menu-block-1 li.double .view-content-right {
   /* aligns top of sub-columns */
-  padding-top: 33px;
 }
 /*
  * Top menu drop-down arrow and hyperlink styling (only visible when menu is hovered)

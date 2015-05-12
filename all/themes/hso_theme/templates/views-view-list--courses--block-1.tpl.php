@@ -10,7 +10,7 @@
   $columnClass = ' class = "menu-view-column-';
   if ($title === 'Lehrgänge' || $title === 'Management und Führung' || $title === 'Marketing und Verkauf') {
     $columnClass .= '1">';
-  } elseif ($title === 'Organisation und Personal' || $title === 'Finanzen' || $title === 'Prüfungstrainings') {
+  } elseif ($title === 'Organisation und Personal' || $title === 'Finanzen' || $title === 'Prüfungstrainings' || $title === 'Höhere Fachschule' || $title === 'Fachhochschule') {
     $columnClass .= '2">';
   } else {
     $columnClass .= '3">';
@@ -22,7 +22,7 @@
   <?php if ($title === 'Management und Führung'): ?>
     <li class="nolink-main clearfix"><?php print "Berufsakademie"; ?></li>
     <li class="nolink clearfix"><?php print $title; ?></li>
-  <?php elseif ($title === 'Höhere Fachschule' || $title === 'Fachhochschule'): ?>
+  <?php elseif ($title === 'Höhere Fachschule' || $title === 'Fachhochschule' || $title === 'Lehrgänge SVIT'): ?>
     <li class="nolink-main clearfix"><?php print $title; ?></li>
   <?php else: ?>
     <li class="nolink clearfix"><?php print $title; ?></li>
