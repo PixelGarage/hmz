@@ -27,7 +27,7 @@
     color: #fff;
     line-height: 20px;
     border-bottom: 1px solid #fff;
-    background: @branding-bg url(../images/blog_icon.png) no-repeat 12px 18px;
+    background: @branding-bg  url(../images/blog_icon.png) no-repeat 12px 18px;
   }
 
   .view {
@@ -76,5 +76,12 @@
   body.excollege_section & {
     .specific-fachwissen-block(#e7e5de; url(../images/ex_fachwissen.png););
   }
+  body.lccollege_section & {
+    .specific-fachwissen-block(@hso-learncoach; none;);
+  }
+  body.langcollege_section & {
+    .specific-fachwissen-block(@hso-sprachen; none;);
+  }
 }
+
 
