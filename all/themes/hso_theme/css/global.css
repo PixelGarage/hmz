@@ -3700,6 +3700,7 @@ body.page-node-1428 .block-views-contacts-block-course-contacts {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: none;
   margin: 0 0 20px;
 }
 #block-views-contacts-block-segment-contacts .content ul.header_links li,
@@ -3991,6 +3992,7 @@ body.langcollege_section .block-views-contacts-block-course-contacts .content ul
  *  Footer block components
  * --------------------------------------------------*/
 #zone-footer-wrapper {
+  margin-top: 50px;
   border-top: 50px solid #e3e3e3;
 }
 #zone-footer-wrapper #block-nodeblock-1049,
@@ -4039,6 +4041,7 @@ body.langcollege_section .block-views-contacts-block-course-contacts .content ul
 #region-footer-first section.block a.social.rss {
   display: block;
   margin: 0 auto;
+  margin: 0 5px;
   background-position: 0 0;
 }
 #region-footer-first section.block a.social.rss:hover {
@@ -4121,36 +4124,42 @@ body.langcollege_section .block-views-contacts-block-course-contacts .content ul
   background: #6e6e6e;
 }
 #region-footer-first section#block-views-locations-block a.social.twitter {
+  margin: 0 5px;
   background-position: -72px 0;
 }
 #region-footer-first section#block-views-locations-block a.social.twitter:hover {
   background-position: -72px -36px;
 }
 #region-footer-first section#block-views-locations-block a.social.facebook {
+  margin: 0 5px;
   background-position: -108px 0;
 }
 #region-footer-first section#block-views-locations-block a.social.facebook:hover {
   background-position: -108px -36px;
 }
 #region-footer-first section#block-views-locations-block a.social.youtube {
+  margin: 0 5px;
   background-position: -144px 0;
 }
 #region-footer-first section#block-views-locations-block a.social.youtube:hover {
   background-position: -144px -36px;
 }
 #region-footer-first section#block-views-locations-block a.social.googleplus {
+  margin: 0 5px;
   background-position: -180px 0;
 }
 #region-footer-first section#block-views-locations-block a.social.googleplus:hover {
   background-position: -180px -36px;
 }
 #region-footer-first section#block-views-locations-block a.social.xing {
+  margin: 0 5px;
   background-position: -216px 0;
 }
 #region-footer-first section#block-views-locations-block a.social.xing:hover {
   background-position: -216px -36px;
 }
 #region-footer-first section#block-views-locations-block a.social.linkedin {
+  margin: 0 5px;
   background-position: -252px 0;
 }
 #region-footer-first section#block-views-locations-block a.social.linkedin:hover {

@@ -1,5 +1,10 @@
 Specific Project Details:
 
+CAUTION!!!!
+============================
+1) header-links in contact and segment blocks HIDDEN!
+
+
 Changes in Modules (Patches)
 ============================
 1)

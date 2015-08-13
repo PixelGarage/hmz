@@ -134,3 +134,8 @@ function hso_theme_views_plugins_alter(&$plugins) {
   $plugins['style']['default']['even empty'] = 'even empty';
 }
 
+
+function hso_theme_views_view_unformatted(&$vars){
+  $view = $vars['view'];
+
+}
