@@ -3,10 +3,20 @@
   drupal_add_library('system', 'ui.tabs');
   $slugs = array();
   $course = node_load($view->args[0]);
-  // Lerncoaching = 91, Sprachen = 92
   $segment_id = $course->field_segment[LANGUAGE_NONE][0]['tid'];
-  $nid = '6820'; // webform Anmeldung - Sprachen und Lerncoaching
-  $form_anmeldung = drupal_render(node_view(node_load($nid)));
+  $nid = null;
+  if (in_array($course->nid, array('7176','7177','7178','7179'))) {
+    // SVIT Lehrgänge: id = 7176 - 7179
+    $nid = '6820'; // webform Anmeldung - Sprachen und Lerncoaching
+
+  } else if (in_array($segment_id, array('91', '92'))) {
+    // Lerncoaching = 91, Sprachen = 92
+    $nid = '6820'; // webform Anmeldung - Sprachen und Lerncoaching
+
+  }
+  if ($nid) {
+    $form_anmeldung = drupal_render(node_view(node_load($nid)));
+  }
 ?>
 <ul>
 	<?php foreach ($view->result as $id => $data): ?>
@@ -25,12 +35,14 @@
     <li><a href="#startdaten">Startdaten</a></li>
   <?php endif; ?>
 </ul>
+
 <?php foreach ($rows as $id => $row): ?>
   <div <?php if ($classes_array[$id]) { print 'class="' . $classes_array[$id] .'"';  } ?> id="<?php print $slugs[$id] ?>">
     <?php print $row; ?>
   </div>
 <?php endforeach; ?>
-<?php if (in_array($segment_id, array('91', '92'))): ?>
+
+<?php if ($nid): ?>
   <div class="views-row views-row-startdaten" id="startdaten">
     <?php print $form_anmeldung; ?>
   </div>

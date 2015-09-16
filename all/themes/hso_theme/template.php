@@ -129,8 +129,4 @@ function hso_theme_field__body__remote_form ($variables) {
   return $output;
 }
 
-function hso_theme_views_plugins_alter(&$plugins) {
-  // call views-view-unformatted templates always (even when no rows are available)
-  $plugins['style']['default']['even empty'] = 'even empty';
-}
 
