@@ -34,12 +34,12 @@ if (empty($rows)) {
   $segment_id = $course->field_segment[LANGUAGE_NONE][0]['tid'];
   $nid = null;
   if (in_array($course->nid, array('7176','7177','7178','7179'))) {
-    // SVIT Lehrgänge: id = 7176 - 7179
-    $nid = '6820'; // webform Anmeldung - Sprachen und Lerncoaching
+    // Webform SVIT Lehrgänge: id = 7176 - 7179
+    $nid = '7215';
 
   } else if (in_array($segment_id, array('91', '92'))) {
-    // Lerncoaching = 91, Sprachen = 92
-    $nid = '6820'; // webform Anmeldung - Sprachen und Lerncoaching
+    // Webform Lerncoaching = 91, Sprachen = 92
+    $nid = '6820';
 
   }
   if ($nid) {
