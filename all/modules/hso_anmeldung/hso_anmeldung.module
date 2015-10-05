@@ -409,7 +409,13 @@ function _hso_add_pdf_footer(&$pdf_document, $context) {
  * Alters the anmeldung webforms with additional text.
 */
 function hso_anmeldung_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'webform_client_form_264' || $form_id == 'webform_client_form_475' || $form_id == 'webform_client_form_476') {
+  if ($form_id == 'webform_client_form_7215') {
+    // add course title to SVIT-Anmeldungs-form (url = node/nid)
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $course = node_load(arg(1));
+      $form['submitted']['course_title']['#value'] = $course->title;
+    }
+  } else if ($form_id == 'webform_client_form_264' || $form_id == 'webform_client_form_475' || $form_id == 'webform_client_form_476') {
 		// extend all anmeldungs-forms (default, european, ecdl),
 		// but only if they are shown (url = node/nid/anmeldung)
 		if (arg(0) == 'node' && is_numeric(arg(1)) && arg(2) == 'anmeldung') {
