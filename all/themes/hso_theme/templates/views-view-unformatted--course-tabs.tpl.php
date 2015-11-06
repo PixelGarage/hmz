@@ -1,12 +1,16 @@
 <?php
-  // prepare view elements
+  //
+  // this template is only performed, if course tabs are available
   drupal_add_library('system', 'ui.tabs');
   $slugs = array();
   $course = node_load($view->args[0]);
   $segment_id = $course->field_segment[LANGUAGE_NONE][0]['tid'];
-  $nid = null;
-  if (in_array($course->nid, array('7176','7177','7178','7179'))) {
+  $nid = -1;  // no form display
+
+  // special form to display for specific course times
+  if (in_array($course->nid, array('7176','7177','7178'))) {
     // Webform SVIT Lehrgänge: id = 7176 - 7179
+    // Lehrgang 7179 has no form
     $nid = '7215';
 
   } else if (in_array($segment_id, array('91', '92'))) {
@@ -14,10 +18,11 @@
     $nid = '6820';
 
   }
-  if ($nid) {
+  if ($nid > 0) {
     $form_anmeldung = drupal_render(node_view(node_load($nid)));
   }
 ?>
+
 <ul>
 	<?php foreach ($view->result as $id => $data): ?>
 		<?php
@@ -29,7 +34,7 @@
 		<li><a href="#<?php print $slug; ?>"><?php print $title; ?></a></li>
 	<?php endforeach; ?>
 
-  <?php if (in_array($segment_id, array('91', '92'))): ?>
+  <?php if ($nid > 0): ?>
 	  <li><a href="#startdaten">Anmeldung</a></li>
   <?php else: ?>
     <li><a href="#startdaten">Startdaten</a></li>
@@ -42,7 +47,7 @@
   </div>
 <?php endforeach; ?>
 
-<?php if ($nid): ?>
+<?php if ($nid > 0): ?>
   <div class="views-row views-row-startdaten" id="startdaten">
     <?php print $form_anmeldung; ?>
   </div>
