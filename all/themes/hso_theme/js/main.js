@@ -544,71 +544,74 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) 
 
       //
       // Adds a listener for the brochure download.
-      $brochureForm.off('submit');
-      $brochureForm.on('submit', function (event) {
-        // Prevents the browser from submitting the form
-        // and thus unloading the current page.
-        event.preventDefault();
+      $brochureForm.once('submit', function () {
+        $brochureForm.bind('submit', function (event) {
+          // Prevents the browser from submitting the form
+          // and thus unloading the current page.
+          event.preventDefault();
 
-        // get form values
-        var segment = $(this).find('.webform-component-interesse select option:selected').html(),
-          course = $(this).find('.webform-component-lehrgang select option:selected').html(),
-          label = segment + ' - ' + course;
+          // get form values
+          var segment = $(this).find('.webform-component-interesse select option:selected').html(),
+            course = $(this).find('.webform-component-lehrgang select option:selected').html(),
+            label = segment + ' - ' + course;
 
-        // Sends the event to Google Analytics and
-        // resubmits the form once the hit is done.
-        ga('send', 'event', 'Brochure-download-form', 'submit', label, {
-          hitCallback: _createFunctionWithTimeout(function () {
-            $brochureForm.off('submit');  // prevents infinite loop
-            $brochureForm.submit();
-          })
+          // Sends the event to Google Analytics and
+          // resubmits the form once the hit is done.
+          ga('send', 'event', 'Brochure-download-form', 'submit', label, {
+            hitCallback: _createFunctionWithTimeout(function () {
+              $brochureForm.unbind('submit');  // prevents infinite loop
+              $brochureForm.submit();
+            })
+          });
         });
       });
 
       //
       // Adds a listener for the brochure postal delivery.
-      $brochurePostal.off('submit');
-      $brochurePostal.on('submit', function (event) {
-        // Prevents the browser from submitting the form
-        // and thus unloading the current page.
-        event.preventDefault();
+      $brochurePostal.once('submit', function () {
+        $brochurePostal.bind('submit', function (event) {
+          // Prevents the browser from submitting the form
+          // and thus unloading the current page.
+          event.preventDefault();
 
-        // get form values
-        var segment = $(this).find('.webform-component-interesse select option:selected').html(),
-          course = $(this).find('.webform-component-lehrgang select option:selected').html(),
-          stao = $(this).find('.webform-component-standort select option:selected').html(),
-          label =  stao + ' - ' + segment + ' - ' + course;
+          // get form values
+          var segment = $(this).find('.webform-component-interesse select option:selected').html(),
+            course = $(this).find('.webform-component-lehrgang select option:selected').html(),
+            stao = $(this).find('.webform-component-standort select option:selected').html(),
+            label =  stao + ' - ' + segment + ' - ' + course;
 
-        // Sends the event to Google Analytics and
-        // resubmits the form once the hit is done.
-        ga('send', 'event', 'Brochure-delivery-form', 'submit', label, {
-          hitCallback: _createFunctionWithTimeout(function () {
-            $brochurePostal.off('submit');  // prevents infinite loop
-            $brochurePostal.submit();
-          })
+          // Sends the event to Google Analytics and
+          // resubmits the form once the hit is done.
+          ga('send', 'event', 'Brochure-delivery-form', 'submit', label, {
+            hitCallback: _createFunctionWithTimeout(function () {
+              $brochurePostal.unbind('submit');  // prevents infinite loop
+              $brochurePostal.submit();
+            })
+          });
         });
       });
 
       //
       // Adds a listener for the consulting form.
-      $consultingForm.off('submit');
-      $consultingForm.on('submit', function (event) {
-        // Prevents the browser from submitting the form
-        // and thus unloading the current page.
-        event.preventDefault();
+      $consultingForm.once('submit', function () {
+        $consultingForm.bind('submit', function (event) {
+          // Prevents the browser from submitting the form
+          // and thus unloading the current page.
+          event.preventDefault();
 
-        // get form values
-        var segment = $(this).find('.webform-component-interesse select option:selected').html(),
-          stao = $(this).find('.webform-component-standort select option:selected').html(),
-          label = segment + ' - ' + stao;
+          // get form values
+          var segment = $(this).find('.webform-component-interesse select option:selected').html(),
+            stao = $(this).find('.webform-component-standort select option:selected').html(),
+            label = segment + ' - ' + stao;
 
-        // Sends the event to Google Analytics and
-        // resubmits the form once the hit is done.
-        ga('send', 'event', 'Consulting-form', 'submit', label, {
-          hitCallback: _createFunctionWithTimeout(function () {
-            $consultingForm.off('submit'); // prevents infinite loop
-            $consultingForm.submit();
-          })
+          // Sends the event to Google Analytics and
+          // resubmits the form once the hit is done.
+          ga('send', 'event', 'Consulting-form', 'submit', label, {
+            hitCallback: _createFunctionWithTimeout(function () {
+              $consultingForm.unbind('submit'); // prevents infinite loop
+              $consultingForm.submit();
+            })
+          });
         });
       });
 
