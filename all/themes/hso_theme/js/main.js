@@ -475,7 +475,7 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) 
 
   Drupal.behaviors.dynamicSelectBoxes = {
     attach: function () {
-      var $webform         = $('form#webform-client-form-1336'),
+      var $webform         = $('form#webform-client-form-1336, #webform-client-form-7619'),
           $selectInteresse = $webform.find('#edit-submitted-interesse'),
           $compAbschluss   = $webform.find('#webform-component-abschluss'),
           $selectAbschluss = $webform.find('#edit-submitted-abschluss'),
@@ -519,6 +519,103 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) 
       });
     }
   };
+
+  /**
+   * Implements google analytic events for the brochure download and the consulting request forms.
+   */
+  Drupal.behaviors.gaEvents = {
+    attach: function () {
+      //
+      // GA Events for the brochure download, consulting requests and brochure postal delivery
+      var $brochureForm = $('#webform-client-form-1336'),
+        $brochurePostal = $('#webform-client-form-7619'),
+        $consultingForm = $('#webform-client-form-1335'),
+        _createFunctionWithTimeout = function (callback, opt_timeout) {
+          var called = false;
+          var fn = function () {
+            if (!called) {
+              called = true;
+              callback();
+            }
+          };
+          setTimeout(fn, opt_timeout || 1000);
+          return fn;
+        };
+
+      //
+      // Adds a listener for the brochure download.
+      $brochureForm.off('submit');
+      $brochureForm.on('submit', function (event) {
+        // Prevents the browser from submitting the form
+        // and thus unloading the current page.
+        event.preventDefault();
+
+        // get form values
+        var segment = $(this).find('.webform-component-interesse select option:selected').html(),
+          course = $(this).find('.webform-component-lehrgang select option:selected').html(),
+          label = segment + ' - ' + course;
+
+        // Sends the event to Google Analytics and
+        // resubmits the form once the hit is done.
+        ga('send', 'event', 'Brochure-download-form', 'submit', label, {
+          hitCallback: _createFunctionWithTimeout(function () {
+            $brochureForm.off('submit');  // prevents infinite loop
+            $brochureForm.submit();
+          })
+        });
+      });
+
+      //
+      // Adds a listener for the brochure postal delivery.
+      $brochurePostal.off('submit');
+      $brochurePostal.on('submit', function (event) {
+        // Prevents the browser from submitting the form
+        // and thus unloading the current page.
+        event.preventDefault();
+
+        // get form values
+        var segment = $(this).find('.webform-component-interesse select option:selected').html(),
+          course = $(this).find('.webform-component-lehrgang select option:selected').html(),
+          stao = $(this).find('.webform-component-standort select option:selected').html(),
+          label =  stao + ' - ' + segment + ' - ' + course;
+
+        // Sends the event to Google Analytics and
+        // resubmits the form once the hit is done.
+        ga('send', 'event', 'Brochure-delivery-form', 'submit', label, {
+          hitCallback: _createFunctionWithTimeout(function () {
+            $brochurePostal.off('submit');  // prevents infinite loop
+            $brochurePostal.submit();
+          })
+        });
+      });
+
+      //
+      // Adds a listener for the consulting form.
+      $consultingForm.off('submit');
+      $consultingForm.on('submit', function (event) {
+        // Prevents the browser from submitting the form
+        // and thus unloading the current page.
+        event.preventDefault();
+
+        // get form values
+        var segment = $(this).find('.webform-component-interesse select option:selected').html(),
+          stao = $(this).find('.webform-component-standort select option:selected').html(),
+          label = segment + ' - ' + stao;
+
+        // Sends the event to Google Analytics and
+        // resubmits the form once the hit is done.
+        ga('send', 'event', 'Consulting-form', 'submit', label, {
+          hitCallback: _createFunctionWithTimeout(function () {
+            $consultingForm.off('submit'); // prevents infinite loop
+            $consultingForm.submit();
+          })
+        });
+      });
+
+    }
+  };
+
+
 
   $.fn.extend({
     linkUrl: function () {
