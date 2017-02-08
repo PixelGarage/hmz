@@ -12,7 +12,6 @@ Changes in Modules (Patches)
 
 Locked Modules (no update)
 ===================
-1) Keep addressfield 7.x-1.0-rc1 (V1.0 has errors)
 
 
 Security settings Going LIVE
