@@ -285,9 +285,13 @@ function _hso_departments_mapping() {
     foreach ($result['taxonomy_term'] as $key => $value) {
       $term = taxonomy_term_load($key);
       $int_id = $term->field_internal_id[LANGUAGE_NONE][0]['value'];
-      $dep_id = !empty($int_id) ? $int_id : -1;
-      $mapping[$dep_id] = $key;
+      if (!empty($int_id)) {
+        $mapping[$int_id] = $key;
+      }
     }
+    // HACK: map Höhere Fachschule (intl_id = 10) to Kaderschule
+    // so that courses of it are imported
+    $mapping[10] = 3;
   }
   // return mapping
   return $mapping;
