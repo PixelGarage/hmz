@@ -1,13 +1,17 @@
 Specific Project Details:
 
+CAUTION!!!!
+============================
+1) header-links in contact and segment blocks HIDDEN!
+
+
 Changes in Modules (Patches)
 ============================
-1)
+1) Field-collection module patch
 
 
 Locked Modules (no update)
 ===================
-1) Keep addressfield 7.x-1.0-rc1 (V1.0 has errors)
 
 
 Security settings Going LIVE

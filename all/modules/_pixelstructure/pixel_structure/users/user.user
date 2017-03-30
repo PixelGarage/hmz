@@ -1,7 +1,5 @@
 <?php
-$export_time = 1430515229;
-
-
+$export_time = 1444127806;
 $data = array(
   'bundles' => array(
     'user' => NULL,
@@ -566,6 +564,75 @@ $data = array(
         ),
       ),
     ),
+    'field_title' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_title' => array(
+                'value' => 'field_title_value',
+                'format' => 'field_title_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_title' => array(
+                'value' => 'field_title_value',
+                'format' => 'field_title_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_title',
+      'type' => 'text',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'field_collection_item' => array(
+          0 => 'field_teaser_tabs',
+        ),
+        'user' => array(
+          0 => 'user',
+        ),
+      ),
+    ),
     'field_twitter_url' => array(
       'translatable' => '0',
       'entity_types' => array(),
@@ -730,7 +797,7 @@ $data = array(
       0 => array(
         'label' => 'Bio',
         'widget' => array(
-          'weight' => '4',
+          'weight' => '6',
           'type' => 'text_textarea',
           'module' => 'text',
           'active' => 1,
@@ -782,7 +849,7 @@ $data = array(
       0 => array(
         'label' => 'Full Name',
         'widget' => array(
-          'weight' => '2',
+          'weight' => '3',
           'type' => 'text_textfield',
           'module' => 'text',
           'active' => 1,
@@ -834,7 +901,7 @@ $data = array(
       0 => array(
         'label' => 'Google+ URL',
         'widget' => array(
-          'weight' => '7',
+          'weight' => '9',
           'type' => 'advanced_link',
           'module' => 'advanced_link',
           'active' => 1,
@@ -889,7 +956,7 @@ $data = array(
       0 => array(
         'label' => 'Linkedin URL',
         'widget' => array(
-          'weight' => '9',
+          'weight' => '11',
           'type' => 'advanced_link',
           'module' => 'advanced_link',
           'active' => 1,
@@ -944,7 +1011,7 @@ $data = array(
       0 => array(
         'label' => 'Phone',
         'widget' => array(
-          'weight' => '5',
+          'weight' => '7',
           'type' => 'text_textfield',
           'module' => 'text',
           'active' => 1,
@@ -996,7 +1063,7 @@ $data = array(
       0 => array(
         'label' => 'Place',
         'widget' => array(
-          'weight' => '6',
+          'weight' => '8',
           'type' => 'text_textfield',
           'module' => 'text',
           'active' => 1,
@@ -1048,7 +1115,7 @@ $data = array(
       0 => array(
         'label' => 'Position/Function',
         'widget' => array(
-          'weight' => '3',
+          'weight' => '5',
           'type' => 'text_textfield',
           'module' => 'text',
           'active' => 1,
@@ -1100,7 +1167,7 @@ $data = array(
       0 => array(
         'label' => 'Segments',
         'widget' => array(
-          'weight' => '11',
+          'weight' => '13',
           'type' => 'options_buttons',
           'module' => 'options',
           'active' => 1,
@@ -1126,11 +1193,63 @@ $data = array(
         'deleted' => '0',
       ),
     ),
+    'field_title' => array(
+      0 => array(
+        'label' => 'Title',
+        'widget' => array(
+          'weight' => '2',
+          'type' => 'text_textfield',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'size' => '60',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => 0,
+          'better_formats' => array(
+            'allowed_formats_toggle' => 0,
+            'allowed_formats' => array(
+              'html' => 'html',
+              'plain_text' => 'plain_text',
+            ),
+            'default_order_toggle' => 0,
+            'default_order_wrapper' => array(
+              'formats' => array(
+                'html' => array(
+                  'weight' => '0',
+                ),
+                'plain_text' => array(
+                  'weight' => '10',
+                ),
+              ),
+            ),
+          ),
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'text_default',
+            'settings' => array(),
+            'module' => 'text',
+            'weight' => 12,
+          ),
+        ),
+        'required' => 0,
+        'description' => 'Add a title, e.g. Dr. or Prof.',
+        'default_value' => NULL,
+        'field_name' => 'field_title',
+        'entity_type' => 'user',
+        'bundle' => 'user',
+        'deleted' => '0',
+      ),
+    ),
     'field_twitter_url' => array(
       0 => array(
         'label' => 'Twitter URL',
         'widget' => array(
-          'weight' => '8',
+          'weight' => '10',
           'type' => 'advanced_link',
           'module' => 'advanced_link',
           'active' => 1,
@@ -1185,7 +1304,7 @@ $data = array(
       0 => array(
         'label' => 'Xing URL',
         'widget' => array(
-          'weight' => '10',
+          'weight' => '12',
           'type' => 'advanced_link',
           'module' => 'advanced_link',
           'active' => 1,

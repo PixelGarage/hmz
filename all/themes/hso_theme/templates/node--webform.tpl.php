@@ -3,6 +3,7 @@
   <?php print render($title_prefix); ?>
   <?php if (!$page && $title): ?>
   <header>
+    <!-- header link removed -->
     <h2<?php print $title_attributes; ?>><?php print $title ?></h2>
   </header>
   <?php endif; ?>

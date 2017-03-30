@@ -26,17 +26,61 @@
  *
  * @ingroup views_templates
  */
+if (empty($rows)) {
+  //
+  // views-view-unformatted--course-tabs.tpl.php not performed due to no available rows
+  // add 'startdaten' tab here
+  drupal_add_library('system', 'ui.tabs');
+  $course = node_load($view->args[0]);
+  $segment_id = $course->field_segment[LANGUAGE_NONE][0]['tid'];
+  $nid = -1; // no form displayed
+
+  // special form needs
+  if (in_array($course->nid, array('7176','7177','7178'))) {
+    // Webform SVIT Lehrgänge: id = 7176 - 7179
+    // Lehrgang 7179 has no form
+    $nid = '7215';
+
+  } else if (in_array($segment_id, array('91', '92'))) {
+    // Webform Lerncoaching = 91, Sprachen = 92
+    $nid = '6820';
+
+  }
+  if ($nid > 0) {
+    $form_anmeldung = drupal_render(node_view(node_load($nid)));
+  } else if ($nid == -1) {
+    // don't display course tabs at all
+    return;
+  }
+}
 ?>
 <div class="<?php print $classes; ?>">
 
 	<div class="view-content">
 		<?php if ($rows): ?>
+
 			<?php print $rows; ?>
+
 		<?php else: ?>
-			<?php drupal_add_library('system', 'ui.tabs'); $slugs = array(); ?>
+
 			<ul>
-				<li><a href="#startdaten">Startdaten</a></li>
+        <?php if ($nid > 0): ?>
+          <li><a href="#startdaten">Anmeldung</a></li>
+        <?php else: ?>
+          <li><a href="#startdaten">Startdaten</a></li>
+        <?php endif; ?>
 			</ul>
+
+      <?php if ($nid > 0): ?>
+        <div class="views-row views-row-startdaten" id="startdaten">
+          <?php print $form_anmeldung; ?>
+        </div>
+      <?php else: ?>
+        <div class="views-row views-row-startdaten" id="startdaten">
+          <?php print views_embed_view('course_times'); ?>
+        </div>
+      <?php endif; ?>
+
 		<?php endif; ?>
 	</div>
 

@@ -129,8 +129,18 @@ function hso_theme_field__body__remote_form ($variables) {
   return $output;
 }
 
-function hso_theme_views_plugins_alter(&$plugins) {
-  // call views-view-unformatted templates always (even when no rows are available)
-  $plugins['style']['default']['even empty'] = 'even empty';
-}
+/**
+ * Preprocess course times search view to change empty text.
+ *
+ * @param $vars
+ */
+function hso_theme_preprocess_views_view(&$vars) {
+  if ($vars['view']->name == 'course_times_search') {
+    // change empty text for segments Learncoaching and Sprachen (id=91,92)
+    $view = $vars['view'];
 
+    if (in_array($view->exposed_raw_input['field_segment_tid_1'], array(91, 92))) {
+      $vars['empty'] = t('Einzeln, zu zweit oder in Kleingruppen erarbeiten Sie Ihre Lernziele mit den geeigneten Lehrmitteln, Sie bestimmen den Rhythmus, die Intensität und die Dauer des Kurses! Rufen Sie uns jetzt an und lassen Sie sich persönlich und individuell beraten.');
+    }
+  }
+}
